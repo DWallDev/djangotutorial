@@ -6,14 +6,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Articles</title>
+    <title>Hive</title>
     <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 
 
 <body>
+    <header class="wrapper">
+        <h1><a href="{% url 'articles:list' %}"><img src="{% static 'logo.png' %}" alt="hive" /></a></h1>
+        <nav>
+            <ul>
+                <li>
+                    <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Logout</button>
+
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </header>
     <div class="wrapper">
-        <h1><a href="{% url 'articles:list' %}"><img src="{% static 'logo.png' %}" /></a></h1>
         {% block content %}
         {% endblock %}
     </div>        
